@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "814571963718",
+    "project_id": "testphotototext",
+    "storage_bucket": "testphotototext.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814571963718:android:7dd6736c56e3f982d7d147",
+        "android_client_info": {
+          "package_name": "com.onebyte.doveso"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "814571963718-6256cf5597q5jpseq679e8beo89dht1i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.onebyte.doveso",
+            "certificate_hash": "86ca769814a07623946eee74cc7383b13571d42b"
+          }
+        },
+        {
+          "client_id": "814571963718-4aspd0hekt5k75d51ddqlt4fvtb13q1r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCezBLegaS-zORij9PEfQdNFWkEOQvuFoc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "814571963718-4aspd0hekt5k75d51ddqlt4fvtb13q1r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

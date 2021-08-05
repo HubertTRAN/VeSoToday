@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+   >
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextureView
+            android:id="@+id/textureView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+        <ImageView
+            android:id="@+id/img_Capture"
+            android:text="Chụp Ảnh"
+            android:rotation="90"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/camera"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_width="65dp"
+            android:layout_height="65dp" />
+
+       <!-- <ImageView
+            android:id="@+id/img_FlashLight"
+            android:text="Chụp Ảnh"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="110dp"
+            android:src="@drawable/ic_flashlight"
+            android:layout_gravity="bottom|right"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />-->
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:background="@drawable/custom_fill_camera"
+            android:layout_marginBottom="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="60dp"
+            android:layout_marginStart="80dp"
+            android:layout_marginEnd="80dp"
+            android:minHeight="500dp"
+            android:layout_height="match_parent"/>
+
+        <!--<TextView
+            android:layout_width="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingBottom="3dp"
+            android:paddingTop="3dp"
+            android:paddingRight="10dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/bg_lnl_alert_lottery"
+            android:textColor="@android:color/black"
+            android:gravity="center_horizontal"
+            android:text="Vui lòng quay điện thoại ngang lại để chụp."
+            android:layout_height="wrap_content"/>-->
+
+        <ImageView
+            android:layout_width="45dp"
+            android:maxHeight="300dp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/quay_ngang_dien_thoai"
+            android:layout_height="wrap_content"/>
+
+    </FrameLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,66 @@
+<resources>
+    <string name="app_name_alias">VeSo Today</string>
+    <string name="Version_Name">Version: 1.6.23.1</string>
+    <string name="App_Name">veso.today</string>
+   <!-- <string name="version">Version: 1.16.5.1</string>-->
+    <string name="About">About</string>
+    <string name="col1">T5</string>
+    <string name="col2">Tây Ninh</string>
+    <string name="col3">An Giang</string>
+    <string name="col4">Bình Thuận</string>
+    <string name="traditional_lottery">Dò số bằng mã số</string>
+    <string name="results_lottery">Dò vé số</string>
+    <string name="lottery_by_voice">Dò vé bằng giọng nói</string>
+    <string name="do_ket_qua">Dò Kết Quả</string>
+    <string name="hint_nhap_ve_so">Nhập vé số</string>
+    <string name="ngay">Ngày:</string>
+    <string name="dai">Đài:</string>
+    <string name="ve_so">Vé Số:</string>
+    <string name="goi_y_nhap_so_do">Nhập số cần dò. Ví dụ: 638691</string>
+    <string name="mo_ta_do_so_nhanh">Đây là chức năng Dò vé số nhanh. Người dùng không cần phải chọn ngày và đài xổ số. \n- Ứng dụng sẽ giúp bạn dò vé số của mình với kết quả xổ số của 30 ngày gần nhất dành cho vé số truyền thống và 60 ngày cho vé số Vietlott. \n- Bạn chỉ cần nhập mã số của tờ vé số cần dò và dò kết quả, nếu trong 30 ngày gần nhất mà mã số của tờ vé số này có chúng thưởng thì chúng tôi sẽ hiển thị chi tiết kết quả phía bên dưới.</string>
+    <string name="noi_dung_huong_dan">Bạn chỉ cần nhập 6 số của tờ vé số cần dò và bấm Dò Kết Quả. Ứng dụng sẽ tự động dò tất cả các đài trong 30 ngày gần nhất và đưa ra kết quả nhanh chóng.</string>
+    <string name="huong_dan_noi_micro">Bạn hãy bấm vào Micro để nói.</string>
+    <string name="huong_dan_chup_hinh_ve_so">Hướng dẫn: Bạn hãy bấm vào máy ảnh ở trên và cầm điện thoại theo chiều ngang để chụp hình tờ vé số.</string>
+    <!--Hướng dẫn: Bạn hãy bấm vào máy ảnh ở trên và cầm điện thoại theo chiều ngang để chụp hình tờ vé số.-->
+    <string name="title_giong_noi">Dò vé số bằng giọng nói</string>
+    <string name="title_hinh_anh">Dò vé số bằng Hình ảnh</string>
+    <string name="huong_dan">Hướng dẫn:</string>
+    <string name="do_ve_so_nhanh">Dò vé số nhanh</string>
+    <string name="ket_qua_da_trung_thuong">Chúc mừng bạn !…\nVé số của bạn đã trúng thưởng giải Đặc Biệt\nTổng giá trị giải thưởng là: 1.500.000.000 đ</string>
+    <string name="ket_qua_khong_trung">Rất tiếc vé số của bạn không trúng giải nào trong 30 ngày qua!
+    \nChúc bạn may mắn lần sau!…</string>
+    <string name="truy_van_do_ve_so">Bạn đã truy vấn dò kết quả vé số nhanh trong %s ngày gần nhất của %s. \nLoại vé %s mệnh giá 10,000đ. \nDãy số của bạn là: %s</string>
+    <string name="truy_van_do_ve_so_hom_nay">Bạn đã truy vấn dò kết quả vé số %s - Xổ số %s\nLoại vé %s chữ số mệnh giá 10,000đ, mở thưởng ngày %s.\nDãy số của bạn là: %s</string>
+    <string name="rbt_do_ve_so_kien_thiet">Kiến Thiết</string>
+    <string name="rbt_do_ve_so_vietlott">Vietlott</string>
+    <string name="do_ve_so_online">Dò vé số online - May mắn mỗi ngày!…</string>
+    <string name="chinh_sua_ve_so">Bạn có thể chỉnh sửa lại nếu chưa đúng!…</string>
+    <string name="close">Đóng</string>
+    <string name="ket_qua_mien_nam">KẾT QUẢ XỔ SỐ MIỀN NAM</string>
+    <string name="ket_qua_mien_trung">KẾT QUẢ XỔ SỐ MIỀN TRUNG</string>
+    <string name="ket_qua_mien_bac">KẾT QUẢ XỔ SỐ %s</string>
+    <string name="k_t_qu_d_v_s">Kết quả dò vé số</string>
+    <string name="dai_khong_hop_le">Đài xổ số của bạn chọn đã không hợp lệ! \nBạn cần chọn đúng đài của tờ vé số.</string>
+    <string name="dai_ma_ve_so_khong_hop_le">Đài xổ số và mã vé số của bạn chọn đã không hợp lệ! \nBạn cần chọn đúng đài của tờ vé số.</string>
+    <string name="ma_ve_so_khong_hop_le_mien_bac">Mã vé số của bạn nhập đã không hợp lệ! \nBạn cần nhập đủ 5 số cho xổ số Miền Bắc.</string>
+    <string name="ma_ve_so_khong_hop_le_mien_nam">Mã vé số của bạn nhập đã không hợp lệ! \nBạn cần nhập đủ 6 số cho xổ số Miền Nam và Miền Trung.</string>
+    <string name="ma_ve_so_khong_hop_le">Mã vé số của bạn nhập đã không hợp lệ! \nBạn cần nhập đủ 6 số cho xổ số Miền Nam và Miền Trung hoặc nhập 5 số cho xổ số Miền Bắc.</string>
+    <string name="ve_so_chua_xo">Kết quả xổ số %s - Xổ số %s mở thưởng ngày %s hiện chưa có trên hệ thống.</string>
+    <string name="ket_noi_mang_loi">Kết nối mạng thất bại!</string>
+    <string name="tai_du_lieu">Đang tải kết quả xổ số. Vui lòng đợi…</string>
+    <string name="ket_noi_mang_loi_chi_tiet">Hiện tại thiết bị của bạn đang bị mất kết nối mạng. Bạn vui lòng kiểm tra và thử lại sau!</string>
+    <!--Dò vé số bằng hình ảnh-->
+    <string name="chua_chup_hinh_anh">Bạn chưa chụp hình ảnh tờ vé số để dò. Vui lòng chụp lại để dò vé số.</string>
+    <string name="khong_the_luu_hinh_anh">Không thể lưu hình ảnh tờ vé số vào điện thoại của bạn!</string>
+    <string name="xin_moi_noi">Xin mời bạn bấm vào nút micro ở trên để nói…</string>
+    <string name="huong_dan_do_giong_noi">Bạn có thể nói theo hướng dẫn dưới đây để dò số chính xác:</string>
+    <string name="huong_dan_do_giong_noi_1">- \'<b>đài cần dò</b>\' + ngày + \'<b>ngày của tờ vé số</b>\' + mã số + \'<b>mã vé số</b>\'</string>
+    <string name="huong_dan_do_giong_noi_2">Gợi ý mẫu: </string>
+    <string name="huong_dan_do_giong_noi_3">- \'Bình Dương ngày 25 tháng 2 mã số 918752\' \n- \'Dò số Bình Dương hôm nay mã số 918752\' \n- \'Bình Dương hôm nay 918752\'</string>
+
+    <string name="Key_Banner" translatable="false">ca-app-pub-3501780503972244/2903987365</string>
+    //ca-app-pub-7795569534398186~1876214255
+    //ca-app-pub-3501780503972244~3053242743
+    <string name="APPLICATION_ID_AD" translatable="false">ca-app-pub-3501780503972244~3053242743</string>
+
+</resources>

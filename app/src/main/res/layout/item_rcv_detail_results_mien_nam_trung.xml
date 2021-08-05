@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:id="@+id/lnl_Results_Lottery"
+    android:minHeight="40dp"
+    android:gravity="center_vertical|center_horizontal"
+    android:background="@color/grey_250"
+    android:layout_height="wrap_content">
+
+
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="0.5dp"
+            android:layout_marginEnd="0.5dp"
+            android:id="@+id/txt_tbr_Prize_Name"
+            android:layout_marginBottom="0.5dp"
+            android:background="@color/grey_background"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="G.7"
+            android:textColor="#000"
+            android:textSize="@dimen/size_prize" />
+
+        <TextView
+            android:id="@+id/txt_tbr_Results_Province1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="0.5dp"
+            android:layout_marginTop="0.5dp"
+            android:layout_marginRight="0.5dp"
+            android:layout_marginBottom="0.5dp"
+            android:layout_weight="3"
+            android:background="@color/grey_background"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="083"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/size_first_prize"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_tbr_Results_Province2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="0.5dp"
+            android:layout_marginTop="0.5dp"
+            android:layout_marginRight="0.5dp"
+            android:layout_marginBottom="0.5dp"
+            android:layout_weight="3"
+            android:background="@color/grey_background"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="719"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/size_first_prize"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_tbr_Results_Province3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="0.5dp"
+            android:layout_marginTop="0.5dp"
+            android:layout_marginEnd="0.5dp"
+            android:layout_marginBottom="0.5dp"
+            android:layout_weight="3"
+            android:background="@color/grey_background"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="337"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/size_first_prize"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_tbr_Results_Province4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="0.5dp"
+            android:layout_marginTop="0.5dp"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="0.5dp"
+            android:layout_weight="3"
+            android:background="@color/grey_background"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="337"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/size_first_prize"
+            android:textStyle="bold" />
+
+
+</LinearLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="size_first_prize">25sp</dimen>
+    <dimen name="size_special_prize">24sp</dimen>
+    <dimen name="size_first_prize_province">25sp</dimen>
+    <dimen name="size_special_province">27sp</dimen>
+    <dimen name="size_prize">16sp</dimen>
+
+</resources>

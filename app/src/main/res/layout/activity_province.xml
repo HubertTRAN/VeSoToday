@@ -1,0 +1,510 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#fff"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:background="@drawable/custom_background"
+        android:id="@+id/toolbar_Location"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        app:contentInsetStartWithNavigation="0dp"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="50dp"
+            android:id="@+id/tbl_Province"
+            android:background="@android:color/transparent"
+            android:layout_margin="5dp">
+
+            <!-- Table Heading -->
+
+            <TableRow
+                android:background="@color/grey_250">
+
+                <TextView
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="0.5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="@string/col1"
+                    android:id="@+id/txt_day"
+                    android:background="@color/orange_result"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/size_prize"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    />
+
+                <TextView
+                    android:layout_marginTop="1dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginStart="0.5dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_width="0dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:layout_height="match_parent"
+                    android:text="@string/col2"
+                    android:id="@+id/txt_Province_Name"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="15dp"
+                    android:textStyle="bold"
+                    android:background="@color/orange_result"
+                    android:layout_weight="9"
+                    android:gravity="center_horizontal"
+                    />
+
+            </TableRow>
+
+            <!-- Table Data -->
+
+            <TableRow
+                android:gravity="center_vertical"
+                android:background="@color/grey_250">
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_width="0dp"
+                    android:background="@android:color/white"
+                    android:layout_height="match_parent"
+                    android:text="G.8"
+                    android:textColor="#000"
+                    android:textSize="@dimen/size_prize"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    />
+
+                <TextView
+
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="0.5dp"
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_weight="9"
+                    android:background="@android:color/white"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="29"
+                    android:id="@+id/txt_result_G8"
+                    android:textColor="@color/red_g8"
+                    android:textSize="32sp"
+                    android:textStyle="bold" />
+
+
+            </TableRow>
+            <TableRow
+                android:gravity="center_vertical"
+                android:background="@color/grey_250">
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="0.5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="G.7"
+                    android:background="@color/grey_background"
+                    android:textColor="#000"
+                    android:textSize="@dimen/size_prize"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    />
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginStart="0.5dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_width="0dp"
+                    android:background="@color/grey_background"
+                    android:layout_height="match_parent"
+                    android:text="083"
+                    android:id="@+id/txt_result_G7"
+                    android:fontFamily="sans-serif-medium"
+                    android:textStyle="bold"
+                    android:textColor="@color/blue_g7"
+                    android:textSize="@dimen/size_first_prize_province"
+                    android:layout_weight="9"
+                    android:gravity="center_horizontal"
+                    />
+
+            </TableRow>
+            <TableRow
+                android:gravity="center_vertical"
+                android:background="@color/grey_250">
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="0.5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="G.6"
+                    android:background="@android:color/white"
+                    android:textColor="#000"
+                    android:textSize="@dimen/size_prize"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    />
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginStart="0.5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="6707"
+                    android:id="@+id/txt_result_G6_1"
+                    android:fontFamily="sans-serif-medium"
+                    android:background="@android:color/white"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/size_first_prize_province"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal"
+                    />
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="9036"
+                    android:id="@+id/txt_result_G6_2"
+                    android:fontFamily="sans-serif-medium"
+                    android:background="@android:color/white"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/size_first_prize_province"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal"
+                    />
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="1128"
+                    android:id="@+id/txt_result_G6_3"
+                    android:fontFamily="sans-serif-medium"
+                    android:background="@android:color/white"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/size_first_prize_province"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal"
+                    />
+
+            </TableRow>
+            <TableRow
+                android:gravity="center_vertical"
+                android:background="@color/grey_250">
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="0.5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="G.5"
+                    android:background="@color/grey_background"
+                    android:textColor="#000"
+                    android:textSize="@dimen/size_prize"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    />
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginStart="0.5dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_width="0dp"
+                    android:background="@color/grey_background"
+                    android:layout_height="wrap_content"
+                    android:text="1379"
+                    android:textStyle="bold"
+                    android:id="@+id/txt_result_G5"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/size_first_prize_province"
+                    android:layout_weight="9"
+                    android:gravity="center_horizontal"
+                    />
+
+
+            </TableRow>
+            <TableRow
+                android:gravity="center_vertical"
+                android:background="@color/grey_250">
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="0.5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="G.4"
+                    android:background="@android:color/white"
+                    android:textColor="#000"
+                    android:textSize="@dimen/size_prize"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    />
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginStart="0.5dp"
+                    android:layout_width="0dp"
+                    android:background="@android:color/white"
+                    android:layout_height="match_parent"
+                    android:text="00249\n72708"
+                    android:id="@+id/txt_result_G4_1"
+                    android:fontFamily="sans-serif-medium"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/size_first_prize_province"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal"
+                    />
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_width="0dp"
+                    android:background="@android:color/white"
+                    android:layout_height="match_parent"
+                    android:text="00248\n72707\n53707"
+                    android:id="@+id/txt_result_G4_2"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/size_first_prize_province"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal"
+                    />
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_width="0dp"
+                    android:background="@android:color/white"
+                    android:layout_height="match_parent"
+                    android:text="00149\n72734"
+                    android:id="@+id/txt_result_G4_3"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/size_first_prize_province"
+                    android:layout_weight="3"
+                    android:gravity="center_horizontal"
+                    />
+
+            </TableRow>
+            <TableRow
+                android:gravity="center_vertical"
+                android:background="@color/grey_250">
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="0.5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="G.3"
+                    android:background="@color/grey_background"
+                    android:textColor="#000"
+                    android:textSize="@dimen/size_prize"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    />
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginStart="0.5dp"
+                    android:layout_width="0dp"
+                    android:background="@color/grey_background"
+                    android:layout_height="match_parent"
+                    android:text="28593"
+                    android:id="@+id/txt_result_G3_1"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/size_first_prize_province"
+                    android:layout_weight="4.5"
+                    android:gravity="center_horizontal"
+                    />
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_width="0dp"
+                    android:background="@color/grey_background"
+                    android:layout_height="match_parent"
+                    android:text="01827"
+                    android:textStyle="bold"
+                    android:id="@+id/txt_result_G3_2"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/size_first_prize_province"
+                    android:layout_weight="4.5"
+                    android:gravity="center_horizontal"
+                    />
+
+
+            </TableRow>
+            <TableRow
+                android:gravity="center_vertical"
+                android:background="@color/grey_250">
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="0.5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="G.2"
+                    android:background="@android:color/white"
+                    android:textColor="#000"
+                    android:textSize="@dimen/size_prize"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    />
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginStart="0.5dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_width="0dp"
+                    android:background="@android:color/white"
+                    android:layout_height="match_parent"
+                    android:text="92669"
+                    android:id="@+id/txt_result_G2"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/size_first_prize_province"
+                    android:layout_weight="9"
+                    android:gravity="center_horizontal"
+                    />
+
+            </TableRow>
+            <TableRow
+                android:gravity="center_vertical"
+                android:background="@color/grey_250">
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="0.5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="G.1"
+                    android:background="@color/grey_background"
+
+                    android:textColor="#000"
+                    android:textSize="@dimen/size_prize"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    />
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginStart="0.5dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_width="0dp"
+                    android:background="@color/grey_background"
+                    android:layout_height="match_parent"
+                    android:text="24266"
+                    android:id="@+id/txt_result_G1"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/size_first_prize_province"
+                    android:layout_weight="9"
+                    android:gravity="center_horizontal"
+                    />
+
+            </TableRow>
+            <TableRow
+                android:gravity="center_vertical"
+                android:background="@color/grey_250">
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginEnd="0.5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:text="ĐB"
+                    android:background="@android:color/white"
+                    android:textColor="#000"
+                    android:textSize="@dimen/size_prize"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    />
+
+                <TextView
+                    android:layout_marginTop="0.5dp"
+                    android:layout_marginBottom="0.5dp"
+                    android:layout_marginStart="0.5dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_width="0dp"
+                    android:background="@android:color/white"
+                    android:layout_height="match_parent"
+                    android:text="322014"
+                    android:id="@+id/txt_result_DB"
+                    android:textStyle="bold"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/red_g8"
+                    android:textSize="@dimen/size_special_province"
+                    android:layout_weight="9"
+                    android:gravity="center_horizontal"
+                    />
+
+            </TableRow>
+
+
+        </TableLayout>
+    </ScrollView>
+
+
+
+
+
+</LinearLayout>

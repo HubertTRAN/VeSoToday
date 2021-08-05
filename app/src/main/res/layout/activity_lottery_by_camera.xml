@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:background="@drawable/custom_background"
+        android:id="@+id/toolbar_Lottery_By_Voice"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        app:contentInsetStartWithNavigation="0dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:background="@android:color/white"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@android:color/white"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_marginTop="30dp"
+                android:background="@android:color/transparent"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:id="@+id/img_Image_Lottery"
+                android:src="@drawable/do_so_hinh_anh"
+                android:layout_height="80dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/custom_lnl_lottery"
+                android:orientation="vertical"
+                android:layout_margin="15dp"
+                android:id="@+id/lnl_Lottery"
+                android:minHeight="140dp"
+                android:paddingBottom="5dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="@string/chinh_sua_ve_so"
+                    android:textStyle="bold"
+                    android:background="@drawable/custom_txt_lottery"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:textColor="@color/white"
+                    android:textSize="17sp"
+                    android:layout_height="40dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="@string/ngay"
+                            android:textSize="12sp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="10dp"
+                            android:textColor="#000"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:layout_width="110dp"
+                            android:layout_marginStart="5dp"
+                            android:text=""
+                            android:paddingLeft="2dp"
+                            android:paddingRight="2dp"
+                            android:id="@+id/txt_DatePicker"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:background="@drawable/custom_edt_date"
+                            android:textSize="16sp"
+                            android:textColor="#000"
+                            android:layout_height="30dp"/>
+                        <!-- <DatePicker
+                             android:id="@+id/datePicker"
+                             android:layout_width="wrap_content"
+                             android:layout_height="wrap_content"
+                             android:layout_marginTop="16dp"
+                             android:datePickerMode="spinner"
+                             android:spinnersShown="false" />-->
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="25dp"
+                            android:text="@string/dai"
+                            android:textSize="12sp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="2dp"
+                            android:textColor="#000"
+                            android:layout_height="wrap_content"/>
+
+                        <FrameLayout
+                            android:layout_width="wrap_content"
+                            android:background="@drawable/custom_edt_date"
+                            android:layout_height="30dp">
+
+                            <Spinner
+                                android:layout_width="wrap_content"
+                                android:paddingLeft="5dp"
+                                android:paddingRight="5dp"
+                                android:minWidth="130dp"
+                                android:textSize="16sp"
+                                android:id="@+id/spn_Name_Lottery"
+                                android:gravity="center_horizontal|center_vertical"
+                                android:background="@android:color/transparent"
+                                android:spinnerMode="dropdown"
+                                android:textAlignment="center"
+                                android:textColor="#000"
+                                android:layout_height="30dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:textColor="@android:color/black"
+                                android:text=""
+                                android:minWidth="130dp"
+                                android:clickable="false"
+                                android:id="@+id/txt_Province_Lottery"
+                                android:layout_gravity="center_horizontal"
+                                android:gravity="center_vertical|center_horizontal"
+                                android:layout_height="30dp"/>
+                        </FrameLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="@string/ve_so"
+                            android:textSize="12sp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="10dp"
+                            android:textColor="#000"
+                            android:layout_height="wrap_content"/>
+
+                        <EditText
+                            android:layout_width="110dp"
+                            android:paddingLeft="2dp"
+                            android:paddingRight="2dp"
+                            android:layout_marginStart="5dp"
+                            android:id="@+id/edt_Code_Lottery"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:inputType="number"
+                            android:maxLength="6"
+                            android:background="@drawable/custom_edt_date"
+                            android:textSize="16sp"
+                            android:imeOptions="actionDone"
+                            android:layout_height="30dp"
+                            android:hint="@string/hint_nhap_ve_so" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:text="@string/do_ket_qua"
+                            android:background="@drawable/custom_btn_results"
+                            android:textAllCaps="false"
+                            android:id="@+id/btn_Results"
+                            android:textColor="@color/white"
+                            android:layout_marginStart="45dp"
+                            android:layout_height="35dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:text="Hướng dẫn cách chụp vé số"
+                android:paddingLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:id="@+id/btn_Help_Desk"
+                android:paddingRight="10dp"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/bg_huong_dan_lottery_blue"
+                android:layout_height="25dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="15dp"
+                android:id="@+id/lnl_Guide_Image_Lottery"
+                android:background="@drawable/custom_lnl_lottery"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="@string/huong_dan"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/bgLogo"
+                    android:textSize="16sp"
+                    android:layout_marginEnd="5dp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/huong_dan_chup_hinh_ve_so"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <ImageView
+                    android:layout_width="300dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ban_tay_chup_ve_so2"
+                    android:layout_marginBottom="5dp"
+                    android:layout_height="125dp"/>
+            </LinearLayout>
+
+            <!--LinearLayout hiển thị kết quả của tờ vé số đã dò-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@drawable/custom_lnl_hien_thi_ket_qua"
+                android:orientation="vertical"
+                android:layout_margin="10dp"
+                android:id="@+id/lnl_Results_Lottery"
+                android:minHeight="140dp"
+                android:paddingBottom="10dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:text="@string/k_t_qu_d_v_s"
+                    android:textStyle="bold"
+                    android:background="@drawable/custom_txt_ket_qua_lottery"
+                    android:paddingBottom="5dp"
+                    android:gravity="center_vertical"
+                    android:paddingStart="10dp"
+                    android:layout_height="40dp"
+                    android:textColor="#fff"
+                    android:textSize="15sp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textStyle="normal"
+                    android:padding="10dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="16sp"
+                    android:background="@drawable/custom_txt_hien_thi_ma_ve_so"
+                    android:fontFamily="sans-serif"
+                    android:textColor="@color/black"
+                    android:id="@+id/txt_Truy_Van_Do_Ve_So_Image"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcv_Results_Lottery_Top"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_height="wrap_content" />
+
+               <!-- <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:background="@color/white"
+                    android:layout_height="wrap_content">
+
+                </LinearLayout>-->
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_gravity="bottom"
+                android:gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:background="#fff"
+                android:layout_height="match_parent">
+
+                <com.google.android.gms.ads.AdView
+                    android:id="@+id/adView_Image"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    app:adSize="LARGE_BANNER"
+                    android:layout_marginBottom="10dp"
+                    app:adUnitId="@string/Key_Banner">
+
+                </com.google.android.gms.ads.AdView>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+</LinearLayout>

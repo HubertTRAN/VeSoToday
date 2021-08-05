@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.onebyte.doveso">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!--<uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />-->
+    <uses-feature android:name="android.hardware.camera2.full"
+        android:required="false"/>
+
+
+    <application
+        android:name="com.onebyte.doveso.controller.UIAppController"
+        android:allowBackup="false"
+        android:usesCleartextTraffic="true"
+        android:icon="@mipmap/ic_veso_today"
+        android:label="@string/app_name_alias"
+        android:roundIcon="@mipmap/ic_veso_today_round"
+        android:supportsRtl="true"
+        android:requestLegacyExternalStorage="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".controller.LaunchScreen"
+            android:screenOrientation="locked"
+            android:theme="@style/SplashTheme">
+            <meta-data
+                android:name="com.google.firebase.ml.vision.DEPENDENCIES"
+                android:value="ocr" />
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- Sample AdMob App ID: ca-app-pub-5520821884851006~6848232112 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="@string/APPLICATION_ID_AD" />
+
+        <meta-data android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notification_doveso" />
+
+        <activity android:name=".controller.Dashboard"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".controller.UITraditionalLottery"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".controller.LotteryByVoice"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".controller.ResultsLottery"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+
+        <activity android:name=".controller.TakeAPicture"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".controller.LotteryByImage"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+
+        <receiver android:name=".api.DeviceBootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".api.AlarmReceiver1" />
+    </application>
+
+</manifest>
