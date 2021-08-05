@@ -61,6 +61,7 @@ public class LaunchScreen extends AppCompatActivity {
     public static boolean checkDownloaded;
     private int countDateSaved = 0;
     private ProgressDialog dialog;
+    private String test = "test github";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
