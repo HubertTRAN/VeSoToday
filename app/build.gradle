@@ -8,8 +8,8 @@ android {
         applicationId "com.onebyte.doveso"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 16
-        versionName "1.6.25.1"
+        versionCode 17
+        versionName "1.7.8.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

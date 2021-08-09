@@ -128,6 +128,10 @@ public class ResultsLottery extends AppCompatActivity {
     private TextView txt_Date_Three_MN, txt_Date_Lottery_MT, txt_Date_Lottery_MB;
     private TextView  txt_Truy_Van_Do_Ve_So, txt_Ket_Qua_Xo_So_Theo_Dai;
 
+    private ImageView img_Bao_Loi_Xo_So;
+    private LinearLayout ln_Name_MN;
+    private TextView txt_Name_MN;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -137,7 +141,7 @@ public class ResultsLottery extends AppCompatActivity {
         setEvent();
         Slidr.attach(this);
 
-        clearAllResultAfter30Day();
+       // clearAllResultAfter30Day();
 
     }
 
@@ -192,78 +196,86 @@ public class ResultsLottery extends AppCompatActivity {
      */
     private void loadDataLotteryHome(String dateSelect, int mienXoSo) {
 
-        List<TraditionalLottery> traditionalLotteryListMN;
-        List<TraditionalLottery> traditionalLotteryListMT;
-        List<TraditionalLottery> traditionalLotteryListMB;
-        TemporaryFileDBTraditionalLottery dbTraditionalLottery = new TemporaryFileDBTraditionalLottery(getApplicationContext());
+        try {
+            List<TraditionalLottery> traditionalLotteryListMN;
+            List<TraditionalLottery> traditionalLotteryListMT;
+            List<TraditionalLottery> traditionalLotteryListMB;
+            TemporaryFileDBTraditionalLottery dbTraditionalLottery = new TemporaryFileDBTraditionalLottery(getApplicationContext());
 
-        if(dateSelect.equals(getDateNow(DEFAULT_DATE_SELECT_FORMAT)))
-        {
+            if(dateSelect.equals(getDateNow(DEFAULT_DATE_SELECT_FORMAT)))
+            {
             /*
                 Nếu kết quả xổ số mà người dùng muốn xem là ngày hôm nay thì mình phải kiếm tra xem đã tới giờ xổ số của các miền chưa.
                 Nếu trước 17h thì hiển thị kết quả xổ số của ngày hôm qua vì hôm nay chưa xổ số miền Nam
                 Nếu trước 18h thì hiển thị kết quả xổ số của ngày hôm qua vì hôm nay chưa xổ số miền Trung
                 Nếu trước 19h thì hiển thị kết quả xổ số của ngày hôm qua vì hôm nay chưa xổ số miền Bắc
              */
-            String dateMienNam;
-            Log.d("dateMien", "DEFAULT_HH = "+ Integer.parseInt(getDateNow(DEFAULT_HHmm)) + "< " + DEFAULT_HOUR_MINUTES);
-            if(Integer.parseInt(getDateNow(DEFAULT_HHmm)) <= DEFAULT_HOUR_MINUTES )
-            {
-                Log.d("dateMien", "dateMienNam chưa xổ số");
-                dateMienNam = getSubDate(1);
-            }else
-            {
-                dateMienNam = getDateNow(DEFAULT_DATE_SELECT_FORMAT);
-                Log.d("dateMien", "dateMienNam đã xổ số");
+                String dateMienNam;
+                Log.d("dateMien", "DEFAULT_HH = "+ Integer.parseInt(getDateNow(DEFAULT_HHmm)) + "< " + DEFAULT_HOUR_MINUTES);
+                if(Integer.parseInt(getDateNow(DEFAULT_HHmm)) <= DEFAULT_HOUR_MINUTES )
+                {
+                    Log.d("dateMien", "dateMienNam chưa xổ số");
+                    dateMienNam = getSubDate(1);
+                }else
+                {
+                    dateMienNam = getDateNow(DEFAULT_DATE_SELECT_FORMAT);
+                    Log.d("dateMien", "dateMienNam đã xổ số");
+                }
+
+                // nhớ bỏ khi có kết quả xổ số
+                dateMienNam = "08-07-2021";
+                String dateMienTrung = (Integer.parseInt(getDateNow(DEFAULT_HH)) < 18) ? getSubDate(1): getDateNow(DEFAULT_DATE_SELECT_FORMAT);
+                dateMienTrung = "05-08-2021";
+                String dateMienNamBac = (Integer.parseInt(getDateNow(DEFAULT_HH)) < 19) ? getSubDate(1): getDateNow(DEFAULT_DATE_SELECT_FORMAT);
+                Log.d("dateMien", "dateMienNam = " + dateMienNam+ "\ndateMienTrung = "+ dateMienTrung
+                        + "\ndateMienNamBac" + dateMienNamBac);
+                traditionalLotteryListMB = dbTraditionalLottery.TraditionalLotteryDBReadWithTime(KET_QUA_MIEN_BAC, dateMienNamBac);
+                // traditionalLotteryListMB = dbTraditionalLottery.TraditionalLotteryDBReadWithTime(KET_QUA_MIEN_BAC, "21-07-2021");
+                traditionalLotteryListMT = dbTraditionalLottery.TraditionalLotteryDBReadWithTime(KET_QUA_MIEN_TRUNG, dateMienTrung);
+                traditionalLotteryListMN = dbTraditionalLottery.TraditionalLotteryDBReadWithTime(KET_QUA_MIEN_NAM, dateMienNam);
+                Log.d("dateMien", "traditionalLotteryListMB = " + traditionalLotteryListMB.size() + "\ntraditionalLotteryListMT = "+ traditionalLotteryListMT.size()
+                        + "\ntraditionalLotteryListMN" + traditionalLotteryListMN.size());
+            }
+            else {
+                traditionalLotteryListMB = dbTraditionalLottery.TraditionalLotteryDBReadWithTime(KET_QUA_MIEN_BAC, dateSelect);
+                //traditionalLotteryListMB = dbTraditionalLottery.TraditionalLotteryDBReadWithTime(KET_QUA_MIEN_BAC, "21-07-2021");
+                traditionalLotteryListMT = dbTraditionalLottery.TraditionalLotteryDBReadWithTime(KET_QUA_MIEN_TRUNG, "05-08-2021");
+                // traditionalLotteryListMN = dbTraditionalLottery.TraditionalLotteryDBReadWithTime(KET_QUA_MIEN_NAM, dateSelect);
+                traditionalLotteryListMN = dbTraditionalLottery.TraditionalLotteryDBReadWithTime(KET_QUA_MIEN_NAM, "08-07-2021");
             }
 
-            // nhớ bỏ khi có kết quả xổ số
-            dateMienNam = "08-07-2021";
-            String dateMienTrung = (Integer.parseInt(getDateNow(DEFAULT_HH)) < 18) ? getSubDate(1): getDateNow(DEFAULT_DATE_SELECT_FORMAT);
-            String dateMienNamBac = (Integer.parseInt(getDateNow(DEFAULT_HH)) < 19) ? getSubDate(1): getDateNow(DEFAULT_DATE_SELECT_FORMAT);
-            Log.d("dateMien", "dateMienNam = " + dateMienNam+ "\ndateMienTrung = "+ dateMienTrung
-                    + "\ndateMienNamBac" + dateMienNamBac);
-            traditionalLotteryListMB = dbTraditionalLottery.TraditionalLotteryDBReadWithTime(KET_QUA_MIEN_BAC, dateMienNamBac);
-           // traditionalLotteryListMB = dbTraditionalLottery.TraditionalLotteryDBReadWithTime(KET_QUA_MIEN_BAC, "21-07-2021");
-            traditionalLotteryListMT = dbTraditionalLottery.TraditionalLotteryDBReadWithTime(KET_QUA_MIEN_TRUNG, dateMienTrung);
-            traditionalLotteryListMN = dbTraditionalLottery.TraditionalLotteryDBReadWithTime(KET_QUA_MIEN_NAM, dateMienNam);
-            Log.d("dateMien", "traditionalLotteryListMB = " + traditionalLotteryListMB.size() + "\ntraditionalLotteryListMT = "+ traditionalLotteryListMT.size()
-            + "\ntraditionalLotteryListMN" + traditionalLotteryListMN.size());
+            if(mienXoSo == KET_QUA_MIEN_NAM)
+            {
+                setDataLotteryForTableRowMN(traditionalLotteryListMN);
+                lnl_TableRow_MN.setVisibility(View.VISIBLE);
+                lnl_TableRow_MT.setVisibility(View.GONE);
+                lnl_TableRow_MB_Province.setVisibility(View.GONE);
+                Log.d("dateMien", "KET_QUA_MIEN_NAM" + traditionalLotteryListMN.size());
+            }
+            else if(mienXoSo == KET_QUA_MIEN_TRUNG)
+            {
+                setDataLotteryForTableRowMT(traditionalLotteryListMT);
+                lnl_TableRow_MN.setVisibility(View.GONE);
+                lnl_TableRow_MT.setVisibility(View.VISIBLE);
+                lnl_TableRow_MB_Province.setVisibility(View.GONE);
+                Log.d("dateMien", "KET_QUA_MIEN_NAM" + traditionalLotteryListMN.size());
+            }else {
+                setDataLotteryForTableRowMB(traditionalLotteryListMB);
+                lnl_TableRow_MN.setVisibility(View.GONE);
+                lnl_TableRow_MT.setVisibility(View.GONE);
+                lnl_TableRow_MB_Province.setVisibility(View.VISIBLE);
+                Log.d("dateMien", "KET_QUA_MIEN_NAM" + traditionalLotteryListMN.size());
+            }
+
+            Log.d("checkKetQua",  "Giờ = " + getDateNow(DEFAULT_HH) + " Miền Bắc = " + traditionalLotteryListMB.size()
+                    + " Miền Trung = " + traditionalLotteryListMT.size()
+                    + " Miền Nam = " + traditionalLotteryListMN.size() + " Ngày = "+ dateSelect);
         }
-        else {
-            traditionalLotteryListMB = dbTraditionalLottery.TraditionalLotteryDBReadWithTime(KET_QUA_MIEN_BAC, dateSelect);
-            //traditionalLotteryListMB = dbTraditionalLottery.TraditionalLotteryDBReadWithTime(KET_QUA_MIEN_BAC, "21-07-2021");
-            traditionalLotteryListMT = dbTraditionalLottery.TraditionalLotteryDBReadWithTime(KET_QUA_MIEN_TRUNG, dateSelect);
-           // traditionalLotteryListMN = dbTraditionalLottery.TraditionalLotteryDBReadWithTime(KET_QUA_MIEN_NAM, dateSelect);
-            traditionalLotteryListMN = dbTraditionalLottery.TraditionalLotteryDBReadWithTime(KET_QUA_MIEN_NAM, "08-07-2021");
+        catch (Exception e)
+        {
+            e.getMessage();
         }
 
-        if(mienXoSo == KET_QUA_MIEN_NAM)
-        {
-            setDataLotteryForTableRowMN(traditionalLotteryListMN);
-            lnl_TableRow_MN.setVisibility(View.VISIBLE);
-            lnl_TableRow_MT.setVisibility(View.GONE);
-            lnl_TableRow_MB_Province.setVisibility(View.GONE);
-            Log.d("dateMien", "KET_QUA_MIEN_NAM" + traditionalLotteryListMN.size());
-        }
-        else if(mienXoSo == KET_QUA_MIEN_TRUNG)
-        {
-            setDataLotteryForTableRowMT(traditionalLotteryListMT);
-            lnl_TableRow_MN.setVisibility(View.GONE);
-            lnl_TableRow_MT.setVisibility(View.VISIBLE);
-            lnl_TableRow_MB_Province.setVisibility(View.GONE);
-            Log.d("dateMien", "KET_QUA_MIEN_NAM" + traditionalLotteryListMN.size());
-        }else {
-            setDataLotteryForTableRowMB(traditionalLotteryListMB);
-            lnl_TableRow_MN.setVisibility(View.GONE);
-            lnl_TableRow_MT.setVisibility(View.GONE);
-            lnl_TableRow_MB_Province.setVisibility(View.VISIBLE);
-            Log.d("dateMien", "KET_QUA_MIEN_NAM" + traditionalLotteryListMN.size());
-        }
-
-        Log.d("checkKetQua",  "Giờ = " + getDateNow(DEFAULT_HH) + " Miền Bắc = " + traditionalLotteryListMB.size()
-                + " Miền Trung = " + traditionalLotteryListMT.size()
-                + " Miền Nam = " + traditionalLotteryListMN.size() + " Ngày = "+ dateSelect);
     }
 
     /**
@@ -272,37 +284,53 @@ public class ResultsLottery extends AppCompatActivity {
      */
     private void setDataLotteryForTableRowMT(List<TraditionalLottery> traditionalLotteryListMT) {
 
-        /**
-         * Miền Trung sẽ có ngày xổ kết quả 3 tỉnh và có ngày xổ kết quả 2 tỉnh. Nếu xổ số chỉ 1 tỉnh là databases lưu bị lỗi.
-         */
-
-        if(traditionalLotteryListMT.size() == 2) // sửa lại chỗ này có khi có 3 đài
-        {
-            int size = 2;
-            prizeResultsListMT = setPrizeResultsList(size, traditionalLotteryListMT.get(0), traditionalLotteryListMT.get(1));
-        }
-        else if(traditionalLotteryListMT.size() == 3)
-        {
-            int size = 3;
-            prizeResultsListMT = setPrizeResultsList(size, traditionalLotteryListMT.get(0), traditionalLotteryListMT.get(1), traditionalLotteryListMT.get(2));
-        }
-        else {
-            Log.e("TAG", "xổ số chỉ 1 tỉnh là databases lưu bị lỗi"+ traditionalLotteryListMT.size());
-        }
-
-        if(traditionalLotteryListMT.size() == 2 || traditionalLotteryListMT.size() == 3)
-        {
-            String aDate = traditionalLotteryListMT.get(0).getNGAY_XO_SO();
-            txt_Date_Lottery_MT.setText(aDate);
-
-            if(prizeResultsListMT.size()>0)
+        try {
+            /**
+             * Miền Trung sẽ có ngày xổ kết quả 3 tỉnh và có ngày xổ kết quả 2 tỉnh. Nếu xổ số chỉ 1 tỉnh là databases lưu bị lỗi.
+             */
+            img_Bao_Loi_Xo_So.setVisibility(View.GONE);
+            lnl_TableRow_MT.setVisibility(View.VISIBLE);
+            if(traditionalLotteryListMT.size() == 1) // sửa lại chỗ này có khi có 3 đài
             {
-                // adapter
-                mAdapterMT = new AdapterDetailResultsLotteryMT(this, prizeResultsListMT);
-                rcv_MienTrung_Lottery.setAdapter(mAdapterMT);
-                //recyclerView.setNestedScrollingEnabled(false); // tắt scroll trong recyclerview
-                mAdapterMT.notifyDataSetChanged();
+                int size = 1;
+                prizeResultsListMT = setPrizeResultsList(size, traditionalLotteryListMT.get(0), false);
             }
+            else if(traditionalLotteryListMT.size() == 2) // sửa lại chỗ này có khi có 3 đài
+            {
+                int size = 2;
+                prizeResultsListMT = setPrizeResultsList(size, traditionalLotteryListMT.get(0), traditionalLotteryListMT.get(1));
+            }
+            else if(traditionalLotteryListMT.size() == 3)
+            {
+                int size = 3;
+                prizeResultsListMT = setPrizeResultsList(size, traditionalLotteryListMT.get(0), traditionalLotteryListMT.get(1), traditionalLotteryListMT.get(2));
+            }
+            else {
+                Log.e("TAG", "xổ số chỉ 1 tỉnh là databases lưu bị lỗi"+ traditionalLotteryListMT.size());
+            }
+
+            if(traditionalLotteryListMT.size() == 1  || traditionalLotteryListMT.size() == 2 || traditionalLotteryListMT.size() == 3)
+            {
+                String aDate = traditionalLotteryListMT.get(0).getNGAY_XO_SO();
+                txt_Date_Lottery_MT.setText(aDate);
+
+                if(prizeResultsListMT.size()>0)
+                {
+                    // adapter
+                    mAdapterMT = new AdapterDetailResultsLotteryMT(this, prizeResultsListMT);
+                    rcv_MienTrung_Lottery.setAdapter(mAdapterMT);
+                    //recyclerView.setNestedScrollingEnabled(false); // tắt scroll trong recyclerview
+                    mAdapterMT.notifyDataSetChanged();
+                }
+            }else {
+                // chưa có kết quả xổ số của ngày hôm nay
+                img_Bao_Loi_Xo_So.setVisibility(View.VISIBLE);
+                lnl_TableRow_MT.setVisibility(View.GONE);
+            }
+        }
+        catch (Exception e)
+        {
+            e.getMessage();
         }
     }
 
@@ -333,7 +361,10 @@ public class ResultsLottery extends AppCompatActivity {
         /**
          * Miền Nam sẽ có ngày xổ kết quả 3 tỉnh và có ngày xổ kết quả 4 tỉnh. Nếu xổ số chỉ 1 tỉnh là databases lưu bị lỗi.
          */
-
+        img_Bao_Loi_Xo_So.setVisibility(View.GONE);
+        lnl_TableRow_MN.setVisibility(View.VISIBLE);
+        ln_Name_MN.setVisibility(View.VISIBLE);
+        txt_Name_MN.setVisibility(View.VISIBLE);
         if(traditionalLotteryListMN.size() == 3) // sửa lại chỗ này có khi có 3 đài
         {
             Log.e("MNN", "traditionalLotteryListMN.size() == 3");
@@ -362,6 +393,15 @@ public class ResultsLottery extends AppCompatActivity {
                 mAdapterMN.notifyDataSetChanged();
             }
         }
+        else {
+            img_Bao_Loi_Xo_So.setVisibility(View.VISIBLE);
+            lnl_TableRow_MN.setVisibility(View.GONE);
+            ln_Name_MN.setVisibility(View.GONE);
+            txt_Name_MN.setVisibility(View.GONE);
+            Log.e("TAG", "xổ số chỉ 1 tỉnh là databases lưu bị lỗi"+ traditionalLotteryListMN.size());
+            /* private LinearLayout ln_Name_MN;
+        private TextView txt_Name_MN;*/
+        }
     }
 
     /**
@@ -374,7 +414,8 @@ public class ResultsLottery extends AppCompatActivity {
         /**
          * Miền Nam sẽ có ngày xổ kết quả 3 tỉnh và có ngày xổ kết quả 4 tỉnh. Nếu xổ số chỉ 1 tỉnh là databases lưu bị lỗi.
          */
-
+        img_Bao_Loi_Xo_So.setVisibility(View.GONE);
+        lnl_TableRow_MB_Province.setVisibility(View.VISIBLE);
         if(traditionalLotteryListMB.size() > 0)
         {
             if(traditionalLotteryListMB.size() == 1) // sửa lại chỗ này có khi có 3 đài
@@ -396,6 +437,8 @@ public class ResultsLottery extends AppCompatActivity {
         }
         else
         {
+            img_Bao_Loi_Xo_So.setVisibility(View.VISIBLE);
+            lnl_TableRow_MB_Province.setVisibility(View.GONE);
             Log.e("aDate", "xổ số chỉ 1 tỉnh là databases lưu bị lỗi"+ traditionalLotteryListMB.size());
         }
     }
@@ -455,6 +498,11 @@ public class ResultsLottery extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+        img_Bao_Loi_Xo_So = findViewById(R.id.img_Bao_Loi_Xo_So);
+
+        ln_Name_MN = findViewById(R.id.ln_Name_MN);
+        txt_Name_MN = findViewById(R.id.txt_Name_MN);
 
         btn_Results = findViewById(R.id.btn_Results);
         txt_DatePicker = findViewById(R.id.txt_DatePicker);

@@ -302,6 +302,13 @@
             <!--Table Miền Nam gồm 3 đài-->
 
             <!--Table Miền Trung gồm 2 đài-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:src="@drawable/bao_loi_xo_so"
+                android:id="@+id/img_Bao_Loi_Xo_So"
+                android:layout_height="200dp"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -314,6 +321,7 @@
                     android:layout_width="match_parent"
                     android:text="@string/ket_qua_mien_nam"
                     android:textStyle="bold"
+                    android:id="@+id/txt_Name_MN"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/custom_txt_lottery_red"
                     android:gravity="center_horizontal|center_vertical"
@@ -328,6 +336,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
+                    android:id="@+id/ln_Name_MN"
                     android:background="#fecb60"
                     android:orientation="horizontal"
                     android:paddingTop="5dp"
