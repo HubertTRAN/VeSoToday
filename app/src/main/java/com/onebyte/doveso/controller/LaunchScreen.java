@@ -654,6 +654,16 @@ public class LaunchScreen extends AppCompatActivity {
                    // Log.d("zsize", "Size = " + 1 + "");
                 }
             } catch (JSONException e) {
+                demTongDaiDaTai += 1; // đếm số đài đã tải hoàn tất
+                //if(demTongDaiDaTai == (demSizeDai - 2)) // demSizeDai - 2 là 2 giải vietlott
+                if(demTongDaiDaTai == demSizeDai) // demSizeDai - 2 là 2 giải vietlott
+                {
+                    //Toast.makeText(getApplicationContext(), "Đã tải dữ liệu hoàn tất", Toast.LENGTH_SHORT).show();
+                    Log.d("xxxaaaa", "Đã tải dữ liệu hoàn tất"+ giaiSau);
+                    checkDownloaded = true;
+                    dialog.dismiss();
+                    startActivityDashboard(10);
+                }
                 Log.e("aaaaa", e.getMessage());
                 e.printStackTrace();
             }

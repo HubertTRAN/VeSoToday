@@ -299,9 +299,18 @@
                 </LinearLayout>-->
             </LinearLayout>
 
+            <!--Hình đại diện cho vé số chưa xổ-->
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:id="@+id/img_Lottery_Error"
+                android:layout_margin="10dp"
+                android:src="@drawable/chua_co_ket_qua_xo_so"
+                android:layout_height="wrap_content"/>
+
             <!--Table Miền Nam gồm 3 đài-->
 
-            <!--Table Miền Trung gồm 2 đài-->
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -315,6 +324,7 @@
                     android:text="@string/ket_qua_mien_nam"
                     android:textStyle="bold"
                     android:layout_marginTop="10dp"
+                    android:id="@+id/txt_Name_Mien_Nam"
                     android:background="@drawable/custom_txt_lottery_red"
                     android:gravity="center_horizontal|center_vertical"
                     android:textColor="@color/white"
@@ -327,6 +337,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
+                    android:id="@+id/lnl_Mien_Nam"
                     android:layout_marginRight="5dp"
                     android:background="#fecb60"
                     android:orientation="horizontal"
@@ -433,6 +444,7 @@
 
             </LinearLayout>
 
+            <!--Table Miền Trung gồm 2 đài-->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="vertical"

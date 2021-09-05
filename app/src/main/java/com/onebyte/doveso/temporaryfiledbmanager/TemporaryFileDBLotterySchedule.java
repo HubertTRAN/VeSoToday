@@ -57,8 +57,10 @@ public class TemporaryFileDBLotterySchedule extends TemporaryFileDBManager {
 			{
 				if(checkDistinct)
 				{
-					sqlQuery = "select distinct DAI_XO_SO, MIEN_XO_SO, LINK_RSS from " + TABLE_NAME +  " WHERE (MIEN_XO_SO like '2' " +
-							"OR MIEN_XO_SO like '1' OR MIEN_XO_SO like '0')  ORDER BY THU";
+					/*sqlQuery = "select distinct DAI_XO_SO, MIEN_XO_SO, LINK_RSS from " + TABLE_NAME +  " WHERE (MIEN_XO_SO like '2' " +
+							"OR MIEN_XO_SO like '1' OR MIEN_XO_SO like '0')  ORDER BY THU";*/
+
+					sqlQuery = "select distinct DAI_XO_SO, MIEN_XO_SO, LINK_RSS from " + TABLE_NAME +  " WHERE (" + " MIEN_XO_SO like '1' OR MIEN_XO_SO like '0')  ORDER BY THU";
 				}else {
 					sqlQuery = "select ROW_ID,THU, DAI_XO_SO, MIEN_XO_SO, LINK_RSS from " + TABLE_NAME +  " ORDER BY THU";
 				}

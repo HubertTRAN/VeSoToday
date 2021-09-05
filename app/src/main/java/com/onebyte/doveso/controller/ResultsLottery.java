@@ -99,10 +99,11 @@ import static com.onebyte.doveso.controller.UITraditionalLottery.setPriority;
 public class ResultsLottery extends AppCompatActivity {
     private Toolbar toolbar;
     private Button btn_Results;
-    private TextView txt_DatePicker;
+    private TextView txt_DatePicker, txt_Name_Mien_Nam;
+    private LinearLayout lnl_Mien_Nam;
     private Spinner spn_Name_Lottery;
     private EditText edt_Code_Lottery;
-    private ImageView img_Closes_Code;
+    private ImageView img_Closes_Code, img_Lottery_Error;
     private CardView cv_Mien_Xo_So;
     public static String lastSelectedDay;
     private static List<String> dateSelect;
@@ -240,25 +241,29 @@ public class ResultsLottery extends AppCompatActivity {
 
         if(mienXoSo == KET_QUA_MIEN_NAM)
         {
-            setDataLotteryForTableRowMN(traditionalLotteryListMN);
+
             lnl_TableRow_MN.setVisibility(View.VISIBLE);
+
             lnl_TableRow_MT.setVisibility(View.GONE);
             lnl_TableRow_MB_Province.setVisibility(View.GONE);
             Log.d("dateMien", "KET_QUA_MIEN_NAM" + traditionalLotteryListMN.size());
+            setDataLotteryForTableRowMN(traditionalLotteryListMN);
         }
         else if(mienXoSo == KET_QUA_MIEN_TRUNG)
         {
-            setDataLotteryForTableRowMT(traditionalLotteryListMT);
+
             lnl_TableRow_MN.setVisibility(View.GONE);
             lnl_TableRow_MT.setVisibility(View.VISIBLE);
             lnl_TableRow_MB_Province.setVisibility(View.GONE);
             Log.d("dateMien", "KET_QUA_MIEN_NAM" + traditionalLotteryListMN.size());
+            setDataLotteryForTableRowMT(traditionalLotteryListMT);
         }else {
-            setDataLotteryForTableRowMB(traditionalLotteryListMB);
+
             lnl_TableRow_MN.setVisibility(View.GONE);
             lnl_TableRow_MT.setVisibility(View.GONE);
             lnl_TableRow_MB_Province.setVisibility(View.VISIBLE);
             Log.d("dateMien", "KET_QUA_MIEN_NAM" + traditionalLotteryListMN.size());
+            setDataLotteryForTableRowMB(traditionalLotteryListMB);
         }
 
         Log.d("checkKetQua",  "Giờ = " + getDateNow(DEFAULT_HH) + " Miền Bắc = " + traditionalLotteryListMB.size()
@@ -346,6 +351,7 @@ public class ResultsLottery extends AppCompatActivity {
         }
         else {
             Log.e("TAG", "xổ số chỉ 1 tỉnh là databases lưu bị lỗi"+ traditionalLotteryListMN.size());
+
         }
 
         if(traditionalLotteryListMN.size() == 3 || traditionalLotteryListMN.size() == 4)
@@ -464,11 +470,17 @@ public class ResultsLottery extends AppCompatActivity {
         spn_Name_Lottery = findViewById(R.id.spn_Name_Lottery);
         edt_Code_Lottery = findViewById(R.id.edt_Code_Lottery);
         img_Closes_Code = findViewById(R.id.img_Closes_Code);
+        img_Lottery_Error = findViewById(R.id.img_Lottery_Error);
         rdb_Mien_Nam_Lottery = findViewById(R.id.rdb_Mien_Nam_Lottery);
         rdb_Mien_Trung_Lottery = findViewById(R.id.rdb_Mien_Trung_Lottery);
         rdb_Mien_Bac_Lottery = findViewById(R.id.rdb_Mien_Bac_Lottery);
         lastSelectedDay = checkDateDaiXoSo();
         setSpinnerWithDay(checkDateDaiXoSo());
+
+       /* private TextView txt_DatePicker, txt_Name_Mien_Nam;
+        private LinearLayout lnl_Mien_Nam;*/
+        txt_Name_Mien_Nam = findViewById(R.id.txt_Name_Mien_Nam);
+        lnl_Mien_Nam = findViewById(R.id.lnl_Mien_Nam);
 
         txt_DatePicker.setText(lastSelectedDay);
         img_Closes_Code.setVisibility(View.GONE);
@@ -538,6 +550,12 @@ public class ResultsLottery extends AppCompatActivity {
             if(lottery_Type.equals(MIEN_NAM))
             {
                 MienNguoiDungChon = KET_QUA_MIEN_NAM;
+
+                img_Lottery_Error.setVisibility(View.VISIBLE);
+                lnl_TableRow_MN.setVisibility(View.GONE);
+                txt_Name_Mien_Nam.setVisibility(View.GONE);
+                lnl_Mien_Nam.setVisibility(View.GONE);
+
                 rdb_Mien_Nam_Lottery.setChecked(true);
                 rdb_Mien_Trung_Lottery.setChecked(false);
                 rdb_Mien_Bac_Lottery.setChecked(false);
@@ -548,6 +566,7 @@ public class ResultsLottery extends AppCompatActivity {
 
             }else if(lottery_Type.equals(MIEN_TRUNG)){
                 MienNguoiDungChon = KET_QUA_MIEN_TRUNG;
+                img_Lottery_Error.setVisibility(View.GONE);
                 rdb_Mien_Nam_Lottery.setChecked(false);
                 rdb_Mien_Trung_Lottery.setChecked(true);
                 rdb_Mien_Bac_Lottery.setChecked(false);
@@ -557,6 +576,7 @@ public class ResultsLottery extends AppCompatActivity {
 
             }else {
                 MienNguoiDungChon = KET_QUA_MIEN_BAC;
+                img_Lottery_Error.setVisibility(View.GONE);
                 rdb_Mien_Nam_Lottery.setChecked(false);
                 rdb_Mien_Trung_Lottery.setChecked(false);
                 rdb_Mien_Bac_Lottery.setChecked(true);
@@ -568,13 +588,14 @@ public class ResultsLottery extends AppCompatActivity {
         }
         else
         {
-            MienNguoiDungChon = KET_QUA_MIEN_NAM;
-            rdb_Mien_Nam_Lottery.setChecked(true);
-            rdb_Mien_Trung_Lottery.setChecked(false);
+            MienNguoiDungChon = KET_QUA_MIEN_TRUNG;
+            img_Lottery_Error.setVisibility(View.GONE);
+            rdb_Mien_Nam_Lottery.setChecked(false);
+            rdb_Mien_Trung_Lottery.setChecked(true);
             rdb_Mien_Bac_Lottery.setChecked(false);
             // đây là phương thức load data kết quả xổ số của ba miền lên giao diện người dùng.
-            loadDataLotteryHome(getDateNow(DEFAULT_DATE_SELECT_FORMAT), KET_QUA_MIEN_NAM);
-            setSharedPreference(getApplicationContext(), LOTTERY_SELECT_MIEN, MIEN_NAM);
+            loadDataLotteryHome(getDateNow(DEFAULT_DATE_SELECT_FORMAT), KET_QUA_MIEN_TRUNG);
+            setSharedPreference(getApplicationContext(), LOTTERY_SELECT_MIEN, MIEN_TRUNG);
         }
     }
 
@@ -661,6 +682,7 @@ public class ResultsLottery extends AppCompatActivity {
             public void onClick(View v) {
                 setSharedPreference(getApplicationContext(), LOTTERY_SELECT_MIEN, MIEN_BAC);
                 MienNguoiDungChon = KET_QUA_MIEN_BAC;
+                img_Lottery_Error.setVisibility(View.GONE);
                 rdb_Mien_Bac_Lottery.setChecked(true);
                 rdb_Mien_Nam_Lottery.setChecked(false);
                 rdb_Mien_Trung_Lottery.setChecked(false);
@@ -674,11 +696,18 @@ public class ResultsLottery extends AppCompatActivity {
             public void onClick(View v) {
                 setSharedPreference(getApplicationContext(), LOTTERY_SELECT_MIEN, MIEN_NAM);
                 MienNguoiDungChon = KET_QUA_MIEN_NAM;
+
+                img_Lottery_Error.setVisibility(View.VISIBLE);
+                lnl_Date_Lottery_MN.setVisibility(View.GONE);
+                txt_Name_Mien_Nam.setVisibility(View.GONE);
+                lnl_Mien_Nam.setVisibility(View.GONE);
+                lnl_Date_Lottery_MT.setVisibility(View.GONE);
+
                 rdb_Mien_Bac_Lottery.setChecked(false);
                 rdb_Mien_Nam_Lottery.setChecked(true);
                 rdb_Mien_Trung_Lottery.setChecked(false);
                 // đây là phương thức load data kết quả xổ số của ba miền lên giao diện người dùng.
-                loadDataLotteryHome(getDateNow(DEFAULT_DATE_SELECT_FORMAT), KET_QUA_MIEN_NAM);
+                //loadDataLotteryHome(getDateNow(DEFAULT_DATE_SELECT_FORMAT), KET_QUA_MIEN_NAM);
             }
         });
 
@@ -687,6 +716,7 @@ public class ResultsLottery extends AppCompatActivity {
             public void onClick(View v) {
                 setSharedPreference(getApplicationContext(), LOTTERY_SELECT_MIEN, MIEN_TRUNG);
                 MienNguoiDungChon = KET_QUA_MIEN_TRUNG;
+                img_Lottery_Error.setVisibility(View.GONE);
                 rdb_Mien_Bac_Lottery.setChecked(false);
                 rdb_Mien_Nam_Lottery.setChecked(false);
                 rdb_Mien_Trung_Lottery.setChecked(true);

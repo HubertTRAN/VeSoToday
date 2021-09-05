@@ -87,7 +87,7 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
                 Log.i("notif","i==0 "+ i);
                 if(i == 0)
                 {
-                    Log.i("notif","i==0");
+                   /* Log.i("notif","i==0");
                     _notificationUtils = new NotificationUtils(context, "1234","Kết Quả Miền Nam Hôm Nay");
                     calendar.set(Calendar.HOUR_OF_DAY, 16);
                     calendar.set(Calendar.MINUTE, 40);
@@ -95,7 +95,7 @@ public class Dashboard extends AppCompatActivity implements View.OnClickListener
                     if (Calendar.getInstance().after(calendar)) {
                         calendar.add(Calendar.DAY_OF_MONTH, 1);
                     }
-                    _notificationUtils.setReminder(calendar.getTimeInMillis(),0);
+                    _notificationUtils.setReminder(calendar.getTimeInMillis(),0);*/
 
                 }else if(i==1)
                 {

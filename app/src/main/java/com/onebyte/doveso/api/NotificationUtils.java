@@ -68,7 +68,7 @@ public class NotificationUtils extends ContextWrapper
             .setContentIntent(ContentPendingIntent)
             .setDefaults(Notification.DEFAULT_LIGHTS | Notification.DEFAULT_VIBRATE)
             .setCategory(NotificationCompat.CATEGORY_MESSAGE)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+            .setPriority(NotificationCompat.PRIORITY_HIGH);
     }
 
     private void createChannel(String chanel_ID, String chanel_Name)
