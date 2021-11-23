@@ -301,12 +301,12 @@
 
             <!--Hình đại diện cho vé số chưa xổ-->
 
-            <ImageView
+          <!--  <ImageView
                 android:layout_width="match_parent"
                 android:id="@+id/img_Lottery_Error"
                 android:layout_margin="10dp"
                 android:src="@drawable/chua_co_ket_qua_xo_so"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"/>-->
 
             <!--Table Miền Nam gồm 3 đài-->
 
@@ -394,7 +394,7 @@
                                 android:id="@+id/txt_Date_Three_MN"
                                 android:paddingRight="15dp"
                                 android:paddingBottom="5dp"
-                                android:text="30-03-2021"
+                                android:text=""
                                 android:textColor="@color/red_g8"
                                 android:textStyle="bold" />
 

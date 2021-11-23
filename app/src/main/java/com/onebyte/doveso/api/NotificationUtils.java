@@ -10,17 +10,11 @@ import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.Build;
 import android.util.Log;
-
 import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
-
 import com.onebyte.doveso.R;
 import com.onebyte.doveso.controller.LaunchScreen;
-
-import java.util.Calendar;
 
 public class NotificationUtils extends ContextWrapper
 {
@@ -103,7 +97,8 @@ public class NotificationUtils extends ContextWrapper
         calendar.set(Calendar.HOUR_OF_DAY, 15);
         calendar.set(Calendar.MINUTE, 44);
         calendar.set(Calendar.SECOND, 1);
-*/    Log.i("notif","timeInMillis = "+ timeInMillis);
+        */
+        Log.i("notif","timeInMillis = "+ timeInMillis);
         AlarmManager _alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         _alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, timeInMillis,
                 AlarmManager.INTERVAL_DAY, _pendingIntent);

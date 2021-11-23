@@ -5,7 +5,7 @@
     <item android:drawable="@color/bgLogo"/>
     <item>
         <bitmap
-            android:src="@drawable/clashcreen_1_8_4_1"
+            android:src="@drawable/clashcreen_1_10_20_1"
             />
     </item>
 </layer-list>

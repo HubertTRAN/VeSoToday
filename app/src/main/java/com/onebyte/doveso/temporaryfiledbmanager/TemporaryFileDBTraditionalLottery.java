@@ -74,48 +74,73 @@ public class TemporaryFileDBTraditionalLottery extends TemporaryFileDBManager {
 
 			String sqlQuery;
 
-			if(domain == KET_QUA_MIEN_NAM)
+			if(dateSelect.isEmpty())
 			{
-				sqlQuery = "select ROW_ID, MIEN_XO_SO, TEN_DAI, NGAY_XO_SO, KET_QUA_G8," +
-						"KET_QUA_G7, KET_QUA_G6, KET_QUA_G5, KET_QUA_G4, KET_QUA_G3, KET_QUA_G2, KET_QUA_G1, KET_QUA_DB " +
-						"from "+ TABLE_NAME + " Where MIEN_XO_SO = '2' AND NGAY_XO_SO like '" + dateSelect + "'";
-			}else if(domain == KET_QUA_MIEN_TRUNG)
-			{
-				sqlQuery = "select ROW_ID, MIEN_XO_SO, TEN_DAI, NGAY_XO_SO, KET_QUA_G8," +
-						"KET_QUA_G7, KET_QUA_G6, KET_QUA_G5, KET_QUA_G4, KET_QUA_G3, KET_QUA_G2, KET_QUA_G1, KET_QUA_DB " +
-						"from "+ TABLE_NAME + " Where MIEN_XO_SO = '1' AND NGAY_XO_SO like '" + dateSelect + "'";
-			}
-			else if(domain == KET_QUA_MIEN_BAC)
-			{
-				sqlQuery = "select ROW_ID, MIEN_XO_SO, TEN_DAI, NGAY_XO_SO, KET_QUA_G8," +
-						"KET_QUA_G7, KET_QUA_G6, KET_QUA_G5, KET_QUA_G4, KET_QUA_G3, KET_QUA_G2, KET_QUA_G1, KET_QUA_DB " +
-						"from "+ TABLE_NAME + " Where MIEN_XO_SO = '0' AND NGAY_XO_SO like '" + dateSelect + "'";
-			}
-			else if(domain == KET_QUA_VIETLOTT_6_45)
-			{
-				sqlQuery = "select ROW_ID, MIEN_XO_SO, TEN_DAI, NGAY_XO_SO, KET_QUA_G8," +
-						"KET_QUA_G7, KET_QUA_G6, KET_QUA_G5, KET_QUA_G4, KET_QUA_G3, KET_QUA_G2, KET_QUA_G1, KET_QUA_DB " +
-						"from "+ TABLE_NAME + " Where MIEN_XO_SO = '3' AND NGAY_XO_SO like '" + dateSelect + "'";
-			}
-			else if(domain == KET_QUA_VIETLOTT_6_55)
-			{
-				sqlQuery = "select ROW_ID, MIEN_XO_SO, TEN_DAI, NGAY_XO_SO, KET_QUA_G8," +
-						"KET_QUA_G7, KET_QUA_G6, KET_QUA_G5, KET_QUA_G4, KET_QUA_G3, KET_QUA_G2, KET_QUA_G1, KET_QUA_DB " +
-						"from "+ TABLE_NAME + " Where MIEN_XO_SO = '4' AND NGAY_XO_SO like '" + dateSelect + "'";
-			}
-			else {
-				if(dateSelect.isEmpty())
+				if(domain == KET_QUA_MIEN_NAM)
 				{
 					sqlQuery = "select ROW_ID, MIEN_XO_SO, TEN_DAI, NGAY_XO_SO, KET_QUA_G8," +
 							"KET_QUA_G7, KET_QUA_G6, KET_QUA_G5, KET_QUA_G4, KET_QUA_G3, KET_QUA_G2, KET_QUA_G1, KET_QUA_DB " +
-							"from "+ TABLE_NAME;
-				}else {
+							"from "+ TABLE_NAME + " Where MIEN_XO_SO = '2' ORDER BY NGAY_XO_SO DESC LIMIT 4";
+				}else if(domain == KET_QUA_MIEN_TRUNG)
+				{
 					sqlQuery = "select ROW_ID, MIEN_XO_SO, TEN_DAI, NGAY_XO_SO, KET_QUA_G8," +
 							"KET_QUA_G7, KET_QUA_G6, KET_QUA_G5, KET_QUA_G4, KET_QUA_G3, KET_QUA_G2, KET_QUA_G1, KET_QUA_DB " +
-							"from "+ TABLE_NAME + " Where NGAY_XO_SO like '" + dateSelect.replace("/","-") + "'";
+							"from "+ TABLE_NAME + " Where MIEN_XO_SO = '1' ORDER BY NGAY_XO_SO DESC LIMIT 2";
+				}
+				else //if(domain == KET_QUA_MIEN_BAC)
+				{
+					sqlQuery = "select ROW_ID, MIEN_XO_SO, TEN_DAI, NGAY_XO_SO, KET_QUA_G8," +
+							"KET_QUA_G7, KET_QUA_G6, KET_QUA_G5, KET_QUA_G4, KET_QUA_G3, KET_QUA_G2, KET_QUA_G1, KET_QUA_DB " +
+							"from "+ TABLE_NAME + " Where MIEN_XO_SO = '0' ORDER BY NGAY_XO_SO DESC LIMIT 1";
 				}
 
+			}else
+			{
+				if(domain == KET_QUA_MIEN_NAM)
+				{
+					sqlQuery = "select ROW_ID, MIEN_XO_SO, TEN_DAI, NGAY_XO_SO, KET_QUA_G8," +
+							"KET_QUA_G7, KET_QUA_G6, KET_QUA_G5, KET_QUA_G4, KET_QUA_G3, KET_QUA_G2, KET_QUA_G1, KET_QUA_DB " +
+							"from "+ TABLE_NAME + " Where MIEN_XO_SO = '2' AND NGAY_XO_SO like '" + dateSelect + "'";
+				}else if(domain == KET_QUA_MIEN_TRUNG)
+				{
+					sqlQuery = "select ROW_ID, MIEN_XO_SO, TEN_DAI, NGAY_XO_SO, KET_QUA_G8," +
+							"KET_QUA_G7, KET_QUA_G6, KET_QUA_G5, KET_QUA_G4, KET_QUA_G3, KET_QUA_G2, KET_QUA_G1, KET_QUA_DB " +
+							"from "+ TABLE_NAME + " Where MIEN_XO_SO = '1' AND NGAY_XO_SO like '" + dateSelect + "'";
+				}
+				else if(domain == KET_QUA_MIEN_BAC)
+				{
+					sqlQuery = "select ROW_ID, MIEN_XO_SO, TEN_DAI, NGAY_XO_SO, KET_QUA_G8," +
+							"KET_QUA_G7, KET_QUA_G6, KET_QUA_G5, KET_QUA_G4, KET_QUA_G3, KET_QUA_G2, KET_QUA_G1, KET_QUA_DB " +
+							"from "+ TABLE_NAME + " Where MIEN_XO_SO = '0' AND NGAY_XO_SO like '" + dateSelect + "'";
+				}
+				else if(domain == KET_QUA_VIETLOTT_6_45)
+				{
+					sqlQuery = "select ROW_ID, MIEN_XO_SO, TEN_DAI, NGAY_XO_SO, KET_QUA_G8," +
+							"KET_QUA_G7, KET_QUA_G6, KET_QUA_G5, KET_QUA_G4, KET_QUA_G3, KET_QUA_G2, KET_QUA_G1, KET_QUA_DB " +
+							"from "+ TABLE_NAME + " Where MIEN_XO_SO = '3' AND NGAY_XO_SO like '" + dateSelect + "'";
+				}
+				else if(domain == KET_QUA_VIETLOTT_6_55)
+				{
+					sqlQuery = "select ROW_ID, MIEN_XO_SO, TEN_DAI, NGAY_XO_SO, KET_QUA_G8," +
+							"KET_QUA_G7, KET_QUA_G6, KET_QUA_G5, KET_QUA_G4, KET_QUA_G3, KET_QUA_G2, KET_QUA_G1, KET_QUA_DB " +
+							"from "+ TABLE_NAME + " Where MIEN_XO_SO = '4' AND NGAY_XO_SO like '" + dateSelect + "'";
+				}
+				else {
+					if(dateSelect.isEmpty())
+					{
+						sqlQuery = "select ROW_ID, MIEN_XO_SO, TEN_DAI, NGAY_XO_SO, KET_QUA_G8," +
+								"KET_QUA_G7, KET_QUA_G6, KET_QUA_G5, KET_QUA_G4, KET_QUA_G3, KET_QUA_G2, KET_QUA_G1, KET_QUA_DB " +
+								"from "+ TABLE_NAME;
+					}else {
+						sqlQuery = "select ROW_ID, MIEN_XO_SO, TEN_DAI, NGAY_XO_SO, KET_QUA_G8," +
+								"KET_QUA_G7, KET_QUA_G6, KET_QUA_G5, KET_QUA_G4, KET_QUA_G3, KET_QUA_G2, KET_QUA_G1, KET_QUA_DB " +
+								"from "+ TABLE_NAME + " Where NGAY_XO_SO like '" + dateSelect.replace("/","-") + "'";
+					}
+
+				}
 			}
+
+
 			Log.d("xxzs",sqlQuery);
 
 			open();

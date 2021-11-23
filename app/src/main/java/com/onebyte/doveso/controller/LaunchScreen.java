@@ -61,7 +61,6 @@ public class LaunchScreen extends AppCompatActivity {
     public static boolean checkDownloaded;
     private int countDateSaved = 0;
     private ProgressDialog dialog;
-    private String test = "test github";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,13 +84,6 @@ public class LaunchScreen extends AppCompatActivity {
                 TemporaryFileDBLotterySchedule temporaryFileDBManagerForLichXoSo = new TemporaryFileDBLotterySchedule(getApplicationContext());
                 List<LotterySchedule> lotteryScheduleList;
                 String THU = getDayNow(getDateNow(DEFAULT_DATE_SELECT_FORMAT));
-                String dateDowloading = getDateNow(DEFAULT_DATE_SELECT_FORMAT);
-                if((Integer.parseInt(getDateNow(DEFAULT_HHmm)) <= DEFAULT_HOUR_MINUTES))
-                {
-                    THU =  getDayNow(getSubDate(1));
-                    dateDowloading = getSubDate(1);
-                    Log.d("TemporaryFileDBManager", "getDayNow(getSubDate(1)) = " + getDayNow(getSubDate(1)));
-                }
                 if(!checkSavedHaveInternet.equals("Failed"))
                 {
                     if(checkSavedHaveInternet.equals("MN")) // Miền Nam
@@ -112,13 +104,29 @@ public class LaunchScreen extends AppCompatActivity {
                     else if(checkSavedHaveInternet.equals("MTMB")) //Miền Trung, Miền Bắc
                         lotteryScheduleList = temporaryFileDBManagerForLichXoSo.LotteryListDBReadWithTime(
                                 THU, "1,0");
-                    else // Miền Nam, Miền Trung, Miền Bắc
+                    else if(checkSavedHaveInternet.equals("MNN")) // Miền Nam trước 4h30
                     {
                         lotteryScheduleList = temporaryFileDBManagerForLichXoSo.LotteryListDBReadWithTime(
-                                THU, "2,1,0");
-                        Log.d("TemporaryFileDBManager", "getDayNow(getSubDate(1)) = " + getDayNow(getSubDate(1)));
+                                null, "2");
+                        checkDownload30Date = true;
+                    }
+                    else if(checkSavedHaveInternet.equals("MTT")) // Miền Trung trước 4h30
+                    {
+                        lotteryScheduleList = temporaryFileDBManagerForLichXoSo.LotteryListDBReadWithTime(
+                                null, "1");
+                        checkDownload30Date = true;
                     }
 
+                    else if(checkSavedHaveInternet.equals("MBB")) // Miền Bắc trước 4h30
+                    {
+                        lotteryScheduleList = temporaryFileDBManagerForLichXoSo.LotteryListDBReadWithTime(
+                                null, "0");
+                        checkDownload30Date = true;
+                    }
+
+                    else // Miền Nam, Miền Trung, Miền Bắc
+                        lotteryScheduleList = temporaryFileDBManagerForLichXoSo.LotteryListDBReadWithTime(
+                                null, "2,1,0");
                 }else
                 {
                     checkDownload30Date = true;
@@ -138,6 +146,8 @@ public class LaunchScreen extends AppCompatActivity {
 
                     for (LotterySchedule lotterySchedule : lotteryScheduleList)
                     {
+
+                        Log.d("TemporaryFileDBManager", "lotterySchedule.getLINK_RSS() = "+lotterySchedule.getLINK_RSS());
                         if(lotterySchedule.getLINK_RSS() != null)
                         {
                             if(!lotterySchedule.getLINK_RSS().isEmpty())
@@ -146,10 +156,12 @@ public class LaunchScreen extends AppCompatActivity {
                                 ///RSSGetResultsLottery(lotterySchedule.getLINK_RSS(), lotterySchedule.getMIEN(), lotterySchedule.getDAI_XO_SO());
                                 // domainLottery, URL, domain;
                                 // new RSSGetResultsLottery(lotterySchedule.getDAI_XO_SO(), lotterySchedule.getLINK_RSS(), lotterySchedule.getMIEN()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+
+
                                 if(checkDownload30Date)
                                     new RSSGetResultsLottery(lotterySchedule.getDAI_XO_SO(), lotterySchedule.getLINK_RSS(), lotterySchedule.getMIEN(), null).execute();
                                 else {
-                                    new RSSGetResultsLottery(lotterySchedule.getDAI_XO_SO(), lotterySchedule.getLINK_RSS(), lotterySchedule.getMIEN(), dateDowloading).execute();
+                                    new RSSGetResultsLottery(lotterySchedule.getDAI_XO_SO(), lotterySchedule.getLINK_RSS(), lotterySchedule.getMIEN(), getDateNow(DEFAULT_DATE_SELECT_FORMAT)).execute();
                                 }
                             }
                         }
@@ -162,7 +174,7 @@ public class LaunchScreen extends AppCompatActivity {
                 startActivityDashboard(50);
             }
 
-           // startActivityDashboard();
+            // startActivityDashboard();
         }
         else {
             Log.d("TemporaryFileDBManager", "no internet!");
@@ -220,7 +232,7 @@ public class LaunchScreen extends AppCompatActivity {
                     // Start home activity
                     startActivityDashboard(50);
                 }
-               return true;
+                return true;
             }else if(Integer.parseInt(getDateNow(DEFAULT_HHmm)) >= DEFAULT_HOUR_MINUTES)
             {
                 if(tongNgay == 30 || tongNgay == 31)
@@ -266,36 +278,34 @@ public class LaunchScreen extends AppCompatActivity {
 
             if((Integer.parseInt(getDateNow(DEFAULT_HHmm)) <= DEFAULT_HOUR_MINUTES))
             {
-                // if(tongNgayMN == 30 && tongNgayMT == 30 && tongNgayMB == 30)
-                if(tongNgayMT == 30 && tongNgayMB == 30)
+                if(tongNgayMN == 30 && tongNgayMT == 30 && tongNgayMB == 30)
                 {
                     countDateSaved = 30;
                     return "Saved";
                 }else
-                    {
+                {
                     String failed ="";
-                    /*if(tongNgayMN <30)
-                        failed += "MN"; // Miền Nam chưa đầy đủ kết quả xổ số*/
+                    if(tongNgayMN <30)
+                        failed += "MNN"; // Miền Nam chưa đầy đủ kết quả xổ số
                     if(tongNgayMT <30)
-                        failed += "MT"; // Miền Trung chưa đầy đủ kết quả xổ số
+                        failed += "MTT"; // Miền Trung chưa đầy đủ kết quả xổ số
                     if(tongNgayMB <30)
-                        failed += "MB"; // Miền Bắc chưa đầy đủ kết quả xổ số
+                        failed += "MBB"; // Miền Bắc chưa đầy đủ kết quả xổ số
 
                     return failed;
                 }
 
             } else
             {
-                //if(tongNgayMN >= 30 && tongNgayMT >= 30 && tongNgayMB >= 30)
-                if(tongNgayMT >= 30 && tongNgayMB >= 30)
+                if(tongNgayMN >= 30 && tongNgayMT >= 30 && tongNgayMB >= 30)
                 {
                     if(Integer.parseInt(getDateNow(DEFAULT_HH)) >= 18)
                     {
                         if(Integer.parseInt(getDateNow(DEFAULT_HH)) >= 19)
                         {
                             String failed ="";
-                           /* if(tongNgayMN != 31)
-                                failed += "MN";*/
+                            if(tongNgayMN != 31)
+                                failed += "MN";
                             if(tongNgayMT != 31)
                                 failed += "MT";
                             if(tongNgayMB != 31)
@@ -307,8 +317,8 @@ public class LaunchScreen extends AppCompatActivity {
                             return failed; // có miền nào đó chưa tải đủ kết quả
                         }else {
                             String failed ="";
-                           /* if(tongNgayMN != 31)
-                                failed += "MN";*/
+                            if(tongNgayMN != 31)
+                                failed += "MN";
                             if(tongNgayMT != 31)
                                 failed += "MT";
 
@@ -318,9 +328,9 @@ public class LaunchScreen extends AppCompatActivity {
                             return failed; // có miền nào đó chưa tải đủ kết quả
                         }
                     }else {
-                        /*if(tongNgayMN != 31)
+                        if(tongNgayMN != 31)
                             return "MN";
-                        else*/
+                        else
                             return "Saved"; // không cần tải thêm đài nào hết
                     }
                 }else {
@@ -344,7 +354,7 @@ public class LaunchScreen extends AppCompatActivity {
             if(ngayLayRa >= ngayHetHangLong)
             {
                 tongNgay += 1;
-                Log.d("NgayHetHang", "ngayHetHang = " + ngayHetHangLong + "  ngayHetHangLong = " + ngayHetHangLong + " Ngay Lay Ra = "+ convertLongToDate(ngayLayRa)  + " ngayLayRa = "+ ngayLayRa);
+                Log.d("NgayHetHang", "ngayHetHang = " + convertLongToDate(ngayHetHangLong) + "  ngayHetHangLong = " + ngayHetHangLong + " Ngay Lay Ra = "+ convertLongToDate(ngayLayRa)  + " ngayLayRa = "+ ngayLayRa);
             }
         }
         return tongNgay;
@@ -511,11 +521,11 @@ public class LaunchScreen extends AppCompatActivity {
                 int code = urlConnection.getResponseCode();
 
                 if(code == 200){
-                        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), StandardCharsets.UTF_8));
-                        String line = "";
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream(), StandardCharsets.UTF_8));
+                    String line = "";
 
-                        while ((line = bufferedReader.readLine()) != null)
-                            result += line;
+                    while ((line = bufferedReader.readLine()) != null)
+                        result += line;
 
                     bufferedReader.close();
                 }else {
@@ -593,7 +603,7 @@ public class LaunchScreen extends AppCompatActivity {
                             Log.d("checkDateMN","Tên đài = " + domainLottery + " Description " + lotteryResults.getDescription());
                             traditionalLottery.setNGAY_XO_SO(pubDate);
 
-                           // Log.d("xxxaaaa","Tên đài = " +  getDateNow() + " ngày = " + pubDate);
+                            // Log.d("xxxaaaa","Tên đài = " +  getDateNow() + " ngày = " + pubDate);
                             /*
                             ĐB: 9456921: 671792: 219803: 79153 - 566604: 14454 - 19922 - 88612 - 76890 - 67529 - 01661 - 993925: 27626: 2790 - 5561 - 26957: 8978: 42
                              */
@@ -619,7 +629,7 @@ public class LaunchScreen extends AppCompatActivity {
                             if(oneDay == null)
                             {
                                 getTraditionalFromRSS (domainLottery, pubDate, lotteryResults.getDescription(), domain);
-                                if(traditionalLottery.getKET_QUA_DB() != null && !traditionalLottery.getKET_QUA_DB().isEmpty())
+                                if(!traditionalLottery.getKET_QUA_DB().isEmpty())
                                 {
                                     Log.d("yyyy", " getKET_QUA_DB = "+ traditionalLottery.getKET_QUA_DB());
                                     // Xuất ra kết quả xổ số đã lấy được
@@ -629,11 +639,10 @@ public class LaunchScreen extends AppCompatActivity {
                                 }
                             }
                             else { // chỉ lưu kết quả xổ số của hôm nay
-                                Log.d("yyyy", " pubDate = "+ pubDate + " oneDay = "+ oneDay);
                                 if(pubDate.equals(oneDay))
                                 {
                                     getTraditionalFromRSS (domainLottery, pubDate, lotteryResults.getDescription(), domain);
-                                    if(traditionalLottery.getKET_QUA_DB() != null && !traditionalLottery.getKET_QUA_DB().isEmpty())
+                                    if(!traditionalLottery.getKET_QUA_DB().isEmpty())
                                     {
                                         Log.d("yyyy", " getKET_QUA_DB1 = "+ traditionalLottery.getKET_QUA_DB());
                                         // Xuất ra kết quả xổ số đã lấy được
@@ -651,19 +660,9 @@ public class LaunchScreen extends AppCompatActivity {
 
                     /*List<TraditionalLottery> traditionalLotteryList = dbTraditionalLottery.TraditionalLotteryDBReadWithTime(5, "");
                     Log.d("zsize", "Size = " + traditionalLotteryList.size() + "");*/
-                   // Log.d("zsize", "Size = " + 1 + "");
+                    // Log.d("zsize", "Size = " + 1 + "");
                 }
             } catch (JSONException e) {
-                demTongDaiDaTai += 1; // đếm số đài đã tải hoàn tất
-                //if(demTongDaiDaTai == (demSizeDai - 2)) // demSizeDai - 2 là 2 giải vietlott
-                if(demTongDaiDaTai == demSizeDai) // demSizeDai - 2 là 2 giải vietlott
-                {
-                    //Toast.makeText(getApplicationContext(), "Đã tải dữ liệu hoàn tất", Toast.LENGTH_SHORT).show();
-                    Log.d("xxxaaaa", "Đã tải dữ liệu hoàn tất"+ giaiSau);
-                    checkDownloaded = true;
-                    dialog.dismiss();
-                    startActivityDashboard(10);
-                }
                 Log.e("aaaaa", e.getMessage());
                 e.printStackTrace();
             }

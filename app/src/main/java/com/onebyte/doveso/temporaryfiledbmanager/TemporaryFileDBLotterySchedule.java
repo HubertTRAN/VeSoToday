@@ -57,10 +57,10 @@ public class TemporaryFileDBLotterySchedule extends TemporaryFileDBManager {
 			{
 				if(checkDistinct)
 				{
-					/*sqlQuery = "select distinct DAI_XO_SO, MIEN_XO_SO, LINK_RSS from " + TABLE_NAME +  " WHERE (MIEN_XO_SO like '2' " +
-							"OR MIEN_XO_SO like '1' OR MIEN_XO_SO like '0')  ORDER BY THU";*/
+					sqlQuery = "select distinct DAI_XO_SO, MIEN_XO_SO, LINK_RSS from " + TABLE_NAME +  " WHERE (MIEN_XO_SO like '2' " +
+							"OR MIEN_XO_SO like '1' OR MIEN_XO_SO like '0')  ORDER BY THU";
 
-					sqlQuery = "select distinct DAI_XO_SO, MIEN_XO_SO, LINK_RSS from " + TABLE_NAME +  " WHERE (" + " MIEN_XO_SO like '1' OR MIEN_XO_SO like '0')  ORDER BY THU";
+					/*sqlQuery = "select distinct DAI_XO_SO, MIEN_XO_SO, LINK_RSS from " + TABLE_NAME +  " WHERE (" + " MIEN_XO_SO like '1' OR MIEN_XO_SO like '0')  ORDER BY THU";*/
 				}else {
 					sqlQuery = "select ROW_ID,THU, DAI_XO_SO, MIEN_XO_SO, LINK_RSS from " + TABLE_NAME +  " ORDER BY THU";
 				}
@@ -110,8 +110,14 @@ public class TemporaryFileDBLotterySchedule extends TemporaryFileDBManager {
 
 		List<LotterySchedule> lotteryScheduleArrayList = new ArrayList<>();
 		try {
+			String sqlQuery;
+			if(Day == null)
+			{
+				sqlQuery = "select distinct DAI_XO_SO, MIEN_XO_SO, LINK_RSS from " + TABLE_NAME + " WHERE (";
+			}else {
+				sqlQuery = "select distinct DAI_XO_SO, MIEN_XO_SO, LINK_RSS from " + TABLE_NAME + " WHERE THU like '"+ Day +"' AND (";
+			}
 
-			String sqlQuery = "select distinct DAI_XO_SO, MIEN_XO_SO, LINK_RSS from " + TABLE_NAME + " WHERE THU like '"+ Day +"' AND (";
 			if(mienXoSo.equals("0") || mienXoSo.equals("1") || mienXoSo.equals("2"))
 			{
 				//select distinct DAI_XO_SO, MIEN_XO_SO, LINK_RSS from LICHXOSO WHERE THU like 'Thu 7' AND MIEN_XO_SO like '0'
