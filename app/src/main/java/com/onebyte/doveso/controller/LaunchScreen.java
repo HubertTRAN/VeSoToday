@@ -123,10 +123,13 @@ public class LaunchScreen extends AppCompatActivity {
                                 null, "0");
                         checkDownload30Date = true;
                     }
-
                     else // Miền Nam, Miền Trung, Miền Bắc
+                    {
+                        checkDownload30Date = true;
                         lotteryScheduleList = temporaryFileDBManagerForLichXoSo.LotteryListDBReadWithTime(
                                 null, "2,1,0");
+                    }
+
                 }else
                 {
                     checkDownload30Date = true;
