@@ -632,26 +632,35 @@ public class LaunchScreen extends AppCompatActivity {
                             if(oneDay == null)
                             {
                                 getTraditionalFromRSS (domainLottery, pubDate, lotteryResults.getDescription(), domain);
-                                if(!traditionalLottery.getKET_QUA_DB().isEmpty())
+                                if(traditionalLottery != null )
                                 {
-                                    Log.d("yyyy", " getKET_QUA_DB = "+ traditionalLottery.getKET_QUA_DB());
-                                    // Xuất ra kết quả xổ số đã lấy được
-                                    TraditionalLottery.TraditionalLotteryToString(traditionalLottery);
-                                    // Thêm kết quả xổ số vào databases SQLite
-                                    dbTraditionalLottery.appendTraditionalLottery(traditionalLottery);
+                                    if(traditionalLottery.getKET_QUA_DB() != null && !traditionalLottery.getKET_QUA_DB().isEmpty())
+                                    {
+                                        Log.d("yyyy", " getKET_QUA_DB = "+ traditionalLottery.getKET_QUA_DB());
+                                        // Xuất ra kết quả xổ số đã lấy được
+                                        TraditionalLottery.TraditionalLotteryToString(traditionalLottery);
+                                        // Thêm kết quả xổ số vào databases SQLite
+                                        dbTraditionalLottery.appendTraditionalLottery(traditionalLottery);
+                                    }
+
                                 }
                             }
                             else { // chỉ lưu kết quả xổ số của hôm nay
                                 if(pubDate.equals(oneDay))
                                 {
                                     getTraditionalFromRSS (domainLottery, pubDate, lotteryResults.getDescription(), domain);
-                                    if(!traditionalLottery.getKET_QUA_DB().isEmpty())
+
+                                    if(traditionalLottery != null )
                                     {
-                                        Log.d("yyyy", " getKET_QUA_DB1 = "+ traditionalLottery.getKET_QUA_DB());
-                                        // Xuất ra kết quả xổ số đã lấy được
-                                        TraditionalLottery.TraditionalLotteryToString(traditionalLottery);
-                                        // Thêm kết quả xổ số vào databases SQLite
-                                        dbTraditionalLottery.appendTraditionalLottery(traditionalLottery);
+                                        if(traditionalLottery.getKET_QUA_DB() != null && !traditionalLottery.getKET_QUA_DB().isEmpty())
+                                        {
+                                            Log.d("yyyy", " getKET_QUA_DB1 = "+ traditionalLottery.getKET_QUA_DB());
+                                            // Xuất ra kết quả xổ số đã lấy được
+                                            TraditionalLottery.TraditionalLotteryToString(traditionalLottery);
+                                            // Thêm kết quả xổ số vào databases SQLite
+                                            dbTraditionalLottery.appendTraditionalLottery(traditionalLottery);
+                                        }
+
                                     }
                                 }
                             }

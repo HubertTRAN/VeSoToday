@@ -30,7 +30,6 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.onebyte.doveso.R;
@@ -53,7 +52,6 @@ import java.util.List;
 import static com.onebyte.doveso.api.ApiMethod.convertDateToMillisecond;
 import static com.onebyte.doveso.api.ApiMethod.convertLongToDate;
 import static com.onebyte.doveso.api.ApiMethod.formatDate;
-import static com.onebyte.doveso.api.ApiMethod.formatDateStart;
 import static com.onebyte.doveso.api.ApiMethod.formatDateStartEnd;
 import static com.onebyte.doveso.api.ApiMethod.getColoredSpanned;
 import static com.onebyte.doveso.api.ApiMethod.getDateNow;
@@ -619,7 +617,6 @@ public class ResultsLottery extends AppCompatActivity {
                 lnl_TableRow_MT.setVisibility(View.VISIBLE);
                 lnl_TableRow_MN.setVisibility(View.GONE);
                 lnl_TableRow_MB_Province.setVisibility(View.GONE);
-                //lnl_Date_Lottery_MT.setVisibility(View.VISIBLE);
                 rdb_Mien_Nam_Lottery.setChecked(false);
                 rdb_Mien_Trung_Lottery.setChecked(true);
                 rdb_Mien_Bac_Lottery.setChecked(false);
@@ -629,7 +626,6 @@ public class ResultsLottery extends AppCompatActivity {
 
             }else {
                 MienNguoiDungChon = KET_QUA_MIEN_BAC;
-                lnl_Date_Lottery_MT.setVisibility(View.GONE);
                 lnl_TableRow_MN.setVisibility(View.GONE);
                 lnl_TableRow_MB_Province.setVisibility(View.VISIBLE);
                 rdb_Mien_Nam_Lottery.setChecked(false);
@@ -649,12 +645,10 @@ public class ResultsLottery extends AppCompatActivity {
             lnl_TableRow_MN.setVisibility(View.VISIBLE);
             lnl_TableRow_MT.setVisibility(View.GONE);
             lnl_TableRow_MB_Province.setVisibility(View.GONE);
-
             rdb_Mien_Nam_Lottery.setChecked(true);
             rdb_Mien_Trung_Lottery.setChecked(false);
             rdb_Mien_Bac_Lottery.setChecked(false);
             txt_Ket_Qua_Xo_So_Theo_Dai.setText(getString(R.string.ket_qua_mien_bac, MIEN_BAC));
-
             // đây là phương thức load data kết quả xổ số của ba miền lên giao diện người dùng.
             loadDataLotteryHome(getDateNow(DEFAULT_DATE_SELECT_FORMAT), KET_QUA_MIEN_NAM);
             setSharedPreference(getApplicationContext(), LOTTERY_SELECT_MIEN, MIEN_NAM);

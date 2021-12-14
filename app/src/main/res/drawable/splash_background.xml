@@ -5,9 +5,8 @@
     <item android:drawable="@color/bgLogo"/>
     <item>
         <bitmap
-            android:src="@drawable/clashcreen_1_10_20_1"
+            android:src="@drawable/clashcreen_1_11_13_1"
             />
     </item>
 </layer-list>
 
-  <!--  android:gravity="center"-->
